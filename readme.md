@@ -3,20 +3,26 @@ Name: Alan Thomas
 
 Section: I2RC
 
-Week: 1
+Week: 2
 
 
 ## Code
 
-The main topic this week was: WPILIB Project Setup Lab
+The main topic this week was: Encoder Lab and PID
 
-Commands: Push
+Commands: 
+initialize()
+execute()
+end(boolean interrupted)
+Command
 
-Subsystems: None
+
+Subsystems: Not sure
 
 ### How does the code work?
-No code yet as we are just starting to work on Drive Train.
+The code is used to track motor movements with precision, while giving feedback on how fast/far something is moving. getTicks() and getMeters() work hand in hand to give us the distance in ticks and meters of how far the robot is going.
 
 
 ### Important notes for future reference
-WPILib Project Setup Link: [https://docs.google.com/document/d/14bEaEqRo8NAq-GLaRGgiZNFHJ4lJZP7VqvjJCCkRsyM/edit?usp=sharing](url)
+class signature meaning - https://bito.ai/resources/java-class-signature-java-explained/
+commands used in this lab - https://docs.wpilib.org/en/stable/docs/software/commandbased/commands.html

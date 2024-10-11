@@ -1,4 +1,4 @@
-# Preseason Digital Notebook Example
+#Preseason Digital Notebook
 Name: Alan Thomas
 
 Section: I2RC

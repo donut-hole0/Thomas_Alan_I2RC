@@ -52,7 +52,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public double getMeters(){
-    return Units.inchesToMeters(6)*Math.PI/4096*getTicks();
+    return (Units.inchesToMeters(6)*Math.PI)/4096*getTicks();
   }
 
   public void resetEncoders(){

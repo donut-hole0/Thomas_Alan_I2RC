@@ -21,7 +21,7 @@ public class EncoderDrive extends Command{
   }
 
   public void execute() {
-    dt.tankDrive(0.1, 0.1);
+    dt.tankDrive(0.3, 0.3);
   }
 
   @Override
@@ -33,6 +33,7 @@ public class EncoderDrive extends Command{
     else return false;
     //Checks to see if robot is 5 cm within range of the setpoint
   }
+  @Override
   public void end(boolean interrupted) {
     dt.tankDrive(0,0);
   }

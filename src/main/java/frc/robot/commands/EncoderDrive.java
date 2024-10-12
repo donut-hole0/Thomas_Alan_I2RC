@@ -1,3 +1,7 @@
+package frc.robot.commands;
+
+import frc.robot.subsystems.Drivetrain;
+
 public class EncoderDrive extends Command {
 
   private final Drivetrain drivetrain;
@@ -17,7 +21,7 @@ public class EncoderDrive extends Command {
   public void execute() {
     double currentPosition = drivetrain.getMeters();
     double error = setpoint - currentPosition;
-    double speedOfRobot = error * 0.1
+    double speedOfRobot = error * 0.1;
     double speed = Math.max(Math.min(speedOfRobot, 1.0), -1.0);
     drivetrain.tankDrive(speed, speed);
   }

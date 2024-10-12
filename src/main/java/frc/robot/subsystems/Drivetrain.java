@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -21,11 +22,12 @@ public class Drivetrain extends SubsystemBase {
   
   /** Creates a new ExampleSubsystem. */
   public Drivetrain() {
-    leftDriveTalon = new WPI_TalonSRX(Constants.Drivetrain_Ports.leftDriveTalonPort);
-    rightDriveTalon = new WPI_TalonSRX(Constants.Drivetrain_Ports.rightDriveTalonPort);
+    leftDriveTalon = new WPI_TalonSRX(Constants.DriveTrainPorts.leftDriveTalonPort);
+    rightDriveTalon = new WPI_TalonSRX(Constants.DriveTrainPorts.rightDriveTalonPort);
     leftDriveTalon.setNeutralMode(NeutralMode.Coast);
     rightDriveTalon.setNeutralMode(NeutralMode.Coast);
     
+    leftDriveTalon.setInverted(false);
     rightDriveTalon.setInverted(true);
     leftDriveTalon.setSensorPhase(true);
     rightDriveTalon.setSensorPhase(true);
@@ -46,22 +48,12 @@ public class Drivetrain extends SubsystemBase {
     navx.reset();
   }
 
-  public double getSelectedSensorPosition() {
-    double leftPosition = leftDriveTalon.getSelectedSensorPosition(0);
-    double rightPosition = rightDriveTalon.getSelectedSensorPosition(0);
-    double averagePosition = (leftPosition + rightPosition) / 2.0;
-    return averagePosition;
+  public double getTicks(){
+    return (leftDriveTalon.getSelectedSensorPosition(0)+ rightDriveTalon.getSelectedSensorPosition(0))/2;
   }
 
-  private static final double wheelDiameterInch = 6.0;
-  private static final int ticksPerRotation = 4096;
-
-  public double getMeters(double ticks){
-    double circumferenceWheel = Math.PI * wheelDiameterInch;
-    double inchToMeter = circumferenceWheel * 0.0254;
-    double distancePerTick = inchToMeter/ticksPerRotation;
-    double ticksToMeters = ticks * distancePerTick;
-    return ticksToMeters;
+  public double getMeters(){
+    return Units.inchesToMeters(6)*Math.PI/4096*getTicks();
   }
 
   public void resetEncoders(){

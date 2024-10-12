@@ -1,39 +1,39 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Drivetrain;
 
-public class EncoderDrive extends Command {
+public class EncoderDrive extends Command{
 
-  private final Drivetrain drivetrain;
+  private final Drivetrain dt;
   private final double setpoint;
-  public EncoderDrive(Drivetrain drivetrain, double setpoint) {
-    this.drivetrain = drivetrain;
+  
+  public EncoderDrive(Drivetrain dt, double setpoint) {
+    this.dt = dt;
     this.setpoint = setpoint;
-    addRequirements(drivetrain);
+    addRequirements(dt);
 
   }
   
   public void initialize() {
-    drivetrain.resetEncoders();
-    drivetrain.tankDrive(0, 0);
+    dt.resetEncoders();
+    dt.tankDrive(0, 0);
   }
 
   public void execute() {
-    double currentPosition = drivetrain.getMeters();
-    double error = setpoint - currentPosition;
-    double speedOfRobot = error * 0.1;
-    double speed = Math.max(Math.min(speedOfRobot, 1.0), -1.0);
-    drivetrain.tankDrive(speed, speed);
+    dt.tankDrive(0.1, 0.1);
   }
 
   @Override
   //Check to see if isFinished is False
   public boolean isFinished() {
-    double currentPosition = drivetrain.getMeters();
-    return Math.abs(setpoint - currentPosition) < 0.05; 
+    if(dt.getMeters() >= setpoint){
+      return true;
+    }
+    else return false;
     //Checks to see if robot is 5 cm within range of the setpoint
   }
   public void end(boolean interrupted) {
-    drivetrain.tankDrive(0,0);
+    dt.tankDrive(0,0);
   }
 }

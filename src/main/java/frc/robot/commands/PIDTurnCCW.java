@@ -12,29 +12,24 @@ public class PIDTurnCCW extends Command{
     private final PIDController pidController;
 
     // constructor
-    public PIDTurnCCW(Drivetrain drivetrain, double targetAngle){
-        this.drivetrain = drivetrain;
-        this.setPointAngle = targetAngle;
+    public PIDTurnCCW(Drivetrain dt, double setPoint, PIDController pid){
+        drivetrain = dt;
+        setPointAngle = setPoint;
+        pidController = pid;
+        addRequirements(dt);
+        pid.setTolerance(5.0);
 
-        addRequirements(drivetrain);
 
-        double maxOutput = 0.6; // change this motor output value as needed
-        double maxError = 90.0; // total degrees that I want to reach
-        double Kp = maxOutput/maxError;
-        pidController = new PIDController(Kp, 0.0, 0.0);
-        pidController.setSetpoint(setPointAngle);
-        pidController.setTolerance(5.0); // + or - 5 degrees
     }
 
 @Override
 public void initialize(){
-    drivetrain.reset();
-
+    drivetrain.resetNavx();
     drivetrain.tankDrive(0,0);
 }
 
 public void execute(){
-    double output = pidController.calculate(setPointAngle);
+    double output = pidController.calculate(drivetrain.getAngle(), setPointAngle);
     drivetrain.tankDrive(output, -output);
 }
 

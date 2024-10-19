@@ -18,8 +18,10 @@ import frc.robot.subsystems.Drivetrain;
 public class RobotContainer {
   public final Drivetrain dt = new Drivetrain();
   public final EncoderDrive drive = new EncoderDrive(dt, 1);
+  
   public RobotContainer() {
     dt.setDefaultCommand(drive);
+
     configureBindings();
   }
 

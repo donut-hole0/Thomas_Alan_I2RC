@@ -29,7 +29,7 @@ public void initialize(){
 
 public void execute(){
     double output = pidController.calculate(drivetrain.getAngle(), setPointAngle);
-    drivetrain.tankDrive(output, -output);
+    drivetrain.tankDrive(-output, output);
 }
 
 public void end(boolean interrupted){

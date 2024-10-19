@@ -22,7 +22,7 @@ public class RobotContainer {
   private final EncoderDrive drive = new EncoderDrive(dt, 1);
   private final PIDTurnCCW pid = new PIDTurnCCW(dt, 90);
   public RobotContainer() {
-
+    dt.setDefaultCommand(pid);
     configureBindings();
   }
 

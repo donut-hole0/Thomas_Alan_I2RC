@@ -46,7 +46,7 @@ public class Drivetrain extends SubsystemBase {
     rightDriveTalon.set(rightSpeed);
   }
   public double getAngle(){
-    return navx.getAngle();
+    return -navx.getAngle();
   }
   public void resetNavx(){
     resetNavx();

@@ -3,7 +3,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.wpilibj.internal.DriverStationModeThread;
 
 public class PIDTurnCCW extends Command{
     // declaring variables

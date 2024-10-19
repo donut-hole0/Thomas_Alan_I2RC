@@ -7,17 +7,16 @@ import edu.wpi.first.wpilibj.internal.DriverStationModeThread;
 
 public class PIDTurnCCW extends Command{
     // declaring variables
-    private final double setPointAngle;
-    private final Drivetrain drivetrain;
-    private final PIDController pidController;
+    double setPointAngle;
+    Drivetrain drivetrain;
+    PIDController pidController = new PIDController(0.7/90, 0, 0);
 
     // constructor
-    public PIDTurnCCW(Drivetrain dt, double setPoint, PIDController pid){
+    public PIDTurnCCW(Drivetrain dt, double setPoint){
         drivetrain = dt;
         setPointAngle = setPoint;
-        pidController = pid;
         addRequirements(dt);
-        pid.setTolerance(5.0);
+        pidController.setTolerance(5.0);
 
 
     }

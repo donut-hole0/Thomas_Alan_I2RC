@@ -4,8 +4,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.EncoderDrive;
+import frc.robot.commands.PIDTurnCCW;
 import frc.robot.subsystems.Drivetrain;
 
 /**
@@ -16,11 +18,10 @@ import frc.robot.subsystems.Drivetrain;
  */
 
 public class RobotContainer {
-  public final Drivetrain dt = new Drivetrain();
-  public final EncoderDrive drive = new EncoderDrive(dt, 1);
-  
+  private final Drivetrain dt = new Drivetrain();
+  private final EncoderDrive drive = new EncoderDrive(dt, 1);
+  private final PIDTurnCCW pid = new PIDTurnCCW(dt, 90);
   public RobotContainer() {
-    dt.setDefaultCommand(drive);
 
     configureBindings();
   }
@@ -47,7 +48,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return drive;
+    return pid;
   }
   
 }

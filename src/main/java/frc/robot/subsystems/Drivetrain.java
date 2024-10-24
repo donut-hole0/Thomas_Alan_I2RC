@@ -1,19 +1,36 @@
+<<<<<<< HEAD
+=======
+package frc.robot.subsystems;
+
+>>>>>>> W3.PID
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
+<<<<<<< HEAD
 package frc.robot.subsystems;
+=======
+>>>>>>> W3.PID
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
+<<<<<<< HEAD
 
 import edu.wpi.first.math.util.Units;
+=======
+import edu.wpi.first.math.util.Units;
+
+>>>>>>> W3.PID
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> W3.PID
 public class Drivetrain extends SubsystemBase {
   private final WPI_TalonSRX leftDriveTalon;
   private final WPI_TalonSRX rightDriveTalon;
@@ -41,9 +58,15 @@ public class Drivetrain extends SubsystemBase {
     rightDriveTalon.set(rightSpeed);
   }
   public double getAngle(){
+<<<<<<< HEAD
     return navx.getAngle();
   }
   public void reset(){
+=======
+    return -navx.getAngle();
+  }
+  public void resetNavx(){
+>>>>>>> W3.PID
     navx.reset();
   }
 

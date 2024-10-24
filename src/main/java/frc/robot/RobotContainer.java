@@ -4,12 +4,17 @@
 
 package frc.robot;
 
+<<<<<<< HEAD
 import java.beans.Encoder;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.EncoderDrive;
+=======
+import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.PIDTurnCCW;
+>>>>>>> W3.PID
 import frc.robot.subsystems.Drivetrain;
 
 /**
@@ -20,10 +25,17 @@ import frc.robot.subsystems.Drivetrain;
  */
 
 public class RobotContainer {
+<<<<<<< HEAD
   public final Drivetrain dt = new Drivetrain();
   public final EncoderDrive drive = new EncoderDrive(dt, 1);
   public RobotContainer() {
     dt.setDefaultCommand(drive);
+=======
+  private final Drivetrain dt = new Drivetrain();
+  private final PIDTurnCCW pid = new PIDTurnCCW(dt, 90);
+  public RobotContainer() {
+    dt.setDefaultCommand(pid);
+>>>>>>> W3.PID
     configureBindings();
   }
 
@@ -49,7 +61,14 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
+<<<<<<< HEAD
     return drive;
   }
   
 }
+=======
+    return pid;
+  }
+  
+}
+>>>>>>> W3.PID

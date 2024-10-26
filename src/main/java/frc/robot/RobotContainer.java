@@ -4,14 +4,9 @@
 
 package frc.robot;
 
-import java.beans.Encoder;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.TeleOp;
-
 import frc.robot.subsystems.Drivetrain;
 
 /**

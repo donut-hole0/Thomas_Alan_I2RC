@@ -18,8 +18,8 @@ public class Drivetrain extends SubsystemBase {
 
  
   public Drivetrain() {
-    leftDriveTalon = new WPI_TalonSRX(Constants.DrivetrainPorts.leftDriveTalonPort);
-    rightDriveTalon = new WPI_TalonSRX(Constants.DrivetrainPorts.leftDriveTalonPort);
+    leftDriveTalon = new WPI_TalonSRX(Constants.DriveTrainPorts.leftDriveTalonPort);
+    rightDriveTalon = new WPI_TalonSRX(Constants.DriveTrainPorts.leftDriveTalonPort);
     leftDriveTalon.setNeutralMode(NeutralMode.Coast);
     rightDriveTalon.setNeutralMode(NeutralMode.Coast);
     rightDriveTalon.setInverted(true);
@@ -32,7 +32,7 @@ public class Drivetrain extends SubsystemBase {
     rightDriveTalon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
   }
 
- public void TankDrive(double leftSpeed, double rightSpeed) {
+ public void tankDrive(double leftSpeed, double rightSpeed) {
   leftDriveTalon.set(leftSpeed);
   rightDriveTalon.set(rightSpeed);
  }
@@ -45,28 +45,12 @@ public class Drivetrain extends SubsystemBase {
   navx.reset();
  }
 
- public void getTicks() {
-  private int leftPosition = leftDriveTalon.getSelectedSensorPosition(0);
-  private int rightPosition = rightDriveTalon.getSelectedSensorPosition(0);
-  private int avgPosition = (leftPosition + rightPosition)/2;
-}
-
-public void getMeters() {
-  private double metersPerTick = (0.1524 * Math.PI)/4096;
-  private double positionInMeters = avgPosition * metersPerTick;
-}
-
-public void resetEncoders() {
-  leftDriveTalon.getSelectedSensorPosition(0,0,10);
-  rightDriveTalon.getSelectedSensorPosition(0,0,10);
-}
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber(key:"Left Voltage", leftDriveTalon.getMotorOutputPercent());
-    SmartDashboard.putNumber(key:"Right Voltage", rightDriveTalon.getMotorOutputPercent());
-    SmartDashboard.putNumber(key: "Angle", navx.getAngle());
+    SmartDashboard.putNumber("Left Voltage", leftDriveTalon.getMotorOutputPercent());
+    SmartDashboard.putNumber("Right Voltage", rightDriveTalon.getMotorOutputPercent());
+    SmartDashboard.putNumber("Angle", navx.getAngle());
   }
 
   @Override
